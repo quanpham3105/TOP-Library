@@ -1,0 +1,22 @@
+.card {
+    margin: auto;
+    border: black solid 2px;
+    width: 20vw;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+
+}
+
+#add {
+    display: block;
+    margin: auto;
+}
+
+.card>div:nth-child(1) {
+    font-style: italic;
+}
