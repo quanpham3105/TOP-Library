@@ -2,74 +2,100 @@ const onePiece = new Book("Eiichiro Oda", "One Piece", "21,450 pages")
 
 const myLibrary = [onePiece];
 
-// const index = 1;
+const add_button = document.getElementById("add");
+const dialog = document.querySelector("dialog");
+const dialogAdd = document.getElementById("dialog-add");
+const close = document.getElementById("close");
+const read = document.getElementsByClassName("readButton")
 
-function Book(author, title, pages) {
+function Book(author, title, pages, read) {
     this.author = author;
     this.title = title;
     this.pages = pages;
+    this.read = read
 }
 
-function addBookToLibrary(author, title, pages) {
-    let book = new Book(author, title, pages);
+function addBookToLibrary(author, title, pages, read) {
+    let book = new Book(author, title, pages, read);
     myLibrary.push(book);
 }
-
-// function incrementIndex() {
-//     index++;
-// }
 
 function displayBook() {
     const parentDiv = document.getElementById("display")
     parentDiv.innerHTML = "";
-    for (book of myLibrary) {
+    myLibrary.forEach((book, index) => {
+
         let newDiv = document.createElement("div");
         let authorDiv = document.createElement("div");
         let titleDiv = document.createElement("div");
         let pagesDiv = document.createElement("div");
+        let readDiv = document.createElement("div");
         let deleteButton = document.createElement("button");
-        // deleteButton.setAttribute("indexNumber", index);
-        deleteButton.innerHTML = "Delete";
+        let readButton = document.createElement("button");
+
+        deleteButton.setAttribute('data-index', index)
         deleteButton.classList.add("deleteButton");
+
+        readButton.classList.add("readButton");
+        if (book.read) {
+            newDiv.style.backgroundColor = "green"
+        }
+        else {
+            newDiv.style.backgroundColor = "red"
+        }
+
         authorDiv.innerHTML = book.author;
         titleDiv.innerHTML = book.title;
         pagesDiv.innerHTML = book.pages;
+        deleteButton.innerHTML = "Delete";
+        readButton.innerHTML = "Read";
+
         newDiv.appendChild(authorDiv);
         newDiv.appendChild(titleDiv);
         newDiv.appendChild(pagesDiv);
         newDiv.appendChild(deleteButton);
+        newDiv.appendChild(readButton);
+
         newDiv.classList.add("card"); //Book cards have class card
         parentDiv.appendChild(newDiv);
-        // incrementIndex();
-    }
+    });
+
+    document.querySelectorAll('.deleteButton').forEach(button => {
+        button.addEventListener('click', deleteBook);
+    });
+
 }
 
 displayBook();
 
-const add_button = document.getElementById("add");
-const dialog = document.querySelector("dialog");
 add_button.addEventListener("click", () => {
     dialog.showModal();
 });
-
-const dialogAdd = document.getElementById("dialog-add");
 
 dialogAdd.addEventListener("click", () => {
     let author = document.getElementById("author").value
     let title = document.getElementById("title").value
     let pages = document.getElementById("pages").value
-    addBookToLibrary(author, title, pages);
+    let readOrNot = document.getElementById("button-read").value
+    if (readOrNot == read) {
+        addBookToLibrary(author, title, pages, true);
+    }
+    else {
+        addBookToLibrary(author, title, pages, false);
+    }
+    document.getElementById("author").value = ''
+    document.getElementById("title").value = ''
+    document.getElementById("pages").value = ''
     dialog.close();
     displayBook();
 })
-
-const close = document.getElementById("close");
 
 close.addEventListener("click", () => {
     dialog.close();
 });
 
-const deleteButton = document.getElementsByClassName("deleteButton");
-
-deleteButton.addEventListener("click", () => {
-});
+function deleteBook(e) {
+    const index = e.target.getAttribute('data-index');
+    myLibrary.splice(index, 1);
+    displayBook();
+}

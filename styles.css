@@ -17,6 +17,11 @@
     margin: auto;
 }
 
-.card>div:nth-child(1) {
+.card>div:nth-child(2) {
     font-style: italic;
+}
+
+#display {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
 }
