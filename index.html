@@ -9,6 +9,10 @@
 </head>
 
 <body>
+    <div class="header">
+        <div>Library</div>
+        <button>Log In</button>
+    </div>
     <button id="add">New Book</button>
     <div id="display">
     </div>
@@ -16,27 +20,22 @@
     <dialog>
         <form action="">
             <div>
-                <button id="close">Close</button>
+                <button id="close" type="button">Close</button>
             </div>
             <label for="author">Author</label>
             <input type="text" name="author" id="author">
-
             <label for="title">Title</label>
             <input type="text" name="title" id="title">
-
             <label for="pages">Number of Pages</label>
             <input type="number" name="pages" id="pages">
         </form>
-
-        <div>
+        <div class="second-form">
             <label for="button-read">Read</label>
             <input type="radio" id="button-read" name="button-read">
-
             <label for="button-read-2">Not Read</label>
             <input type="radio" id="button-read-2" name="button-read">
+            <button id="dialog-add">Add Book</button>
         </div>
-
-        <button id="dialog-add">Add Book</button>
     </dialog>
 
 </body>

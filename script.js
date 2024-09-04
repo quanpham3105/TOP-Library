@@ -89,7 +89,6 @@ dialogAdd.addEventListener("click", () => {
     let author = document.getElementById("author").value
     let title = document.getElementById("title").value
     let pages = document.getElementById("pages").value
-    // let readOrNot = document.getElementsByName("button-read").value;
     let radioButton = document.getElementById('button-read');
     if (radioButton.checked) {
         addBookToLibrary(author, title, pages, true);

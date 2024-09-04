@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 .card {
     margin: auto;
     border: black solid 2px;
@@ -24,4 +29,136 @@
 #display {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+}
+
+.header {
+    display: flex;
+    height: 10vh;
+    justify-content: space-between;
+    align-items: center;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+    box-shadow: 1px 1px 5px #555 inset;
+}
+
+.header>div {
+    color: white;
+    padding-left: 2rem;
+    font-size: 2rem;
+}
+
+.header>button {
+    margin-right: 2rem;
+    width: 6rem;
+    height: 2.5rem;
+    border: none;
+    border-radius: 5px;
+    background-color: lightblue;
+    color: white;
+    box-shadow: 5px 5px 5px #000;
+}
+
+.header>button:hover {
+    filter: brightness(120%);
+    box-shadow: 10px 10px 10px #000
+}
+
+.header>button:active {
+    box-shadow: inset 2px 2px 10px #000;
+}
+
+dialog {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 50vh;
+    height: 50vh;
+
+    border: 1px black solid;
+    border-radius: 5px;
+}
+
+dialog>form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.second-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 15px;
+}
+
+#add {
+    margin-top: 1rem;
+    width: 10vw;
+    height: 5vh;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #000;
+}
+
+#add:hover {
+    filter: brightness(120%);
+    box-shadow: 10px 10px 10px #000
+}
+
+#add:active {
+    box-shadow: inset 2px 2px 10px #000;
+}
+
+#close {
+    width: 5vw;
+    height: 4vh;
+    border: none;
+    border-radius: 5px;
+    margin-top: 15px;
+}
+
+#close:hover {
+    filter: brightness(120%);
+    box-shadow: 10px 10px 10px #000
+}
+
+#close:active {
+    box-shadow: inset 2px 2px 10px #000;
+}
+
+#dialog-add {
+    width: 5vw;
+    height: 4vh;
+    border: none;
+    border-radius: 5px;
+}
+
+#dialog-add:hover {
+    filter: brightness(120%);
+    box-shadow: 10px 10px 10px #000
+}
+
+#dialog-add:active {
+    box-shadow: inset 2px 2px 10px #000;
+}
+
+.deleteButton {
+    width: 5vw;
+    height: 4vh;
+    border: none;
+    border-radius: 5px;
+    margin-top: 5px;
+    border: none;
+}
+
+.readButton {
+    width: 5vw;
+    height: 4vh;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    border: none;
 }
