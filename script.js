@@ -1,12 +1,10 @@
-const onePiece = new Book("Eiichiro Oda", "One Piece", "21,450 pages")
-
-const myLibrary = [onePiece];
+const myLibrary = [];
 
 const add_button = document.getElementById("add");
 const dialog = document.querySelector("dialog");
 const dialogAdd = document.getElementById("dialog-add");
 const close = document.getElementById("close");
-const read = document.getElementsByClassName("readButton")
+const read_Button = document.getElementsByClassName("readButton")
 
 function Book(author, title, pages, read) {
     this.author = author;
@@ -36,6 +34,8 @@ function displayBook() {
         deleteButton.setAttribute('data-index', index)
         deleteButton.classList.add("deleteButton");
 
+        newDiv.classList.add('container-card');
+
         readButton.classList.add("readButton");
         if (book.read) {
             newDiv.style.backgroundColor = "green"
@@ -64,9 +64,22 @@ function displayBook() {
         button.addEventListener('click', deleteBook);
     });
 
+    document.querySelectorAll('.readButton').forEach(button => {
+        button.addEventListener('click', changeColor)
+    });
+
 }
 
-displayBook();
+function changeColor(event) {
+    let target = event.target;
+    let parent = target.parentElement;
+    if (parent.style.backgroundColor == "green") {
+        parent.style.backgroundColor = 'red';
+    }
+    else {
+        parent.style.backgroundColor = 'green';
+    }
+}
 
 add_button.addEventListener("click", () => {
     dialog.showModal();
@@ -76,8 +89,9 @@ dialogAdd.addEventListener("click", () => {
     let author = document.getElementById("author").value
     let title = document.getElementById("title").value
     let pages = document.getElementById("pages").value
-    let readOrNot = document.getElementById("button-read").value
-    if (readOrNot == read) {
+    // let readOrNot = document.getElementsByName("button-read").value;
+    let radioButton = document.getElementById('button-read');
+    if (radioButton.checked) {
         addBookToLibrary(author, title, pages, true);
     }
     else {
