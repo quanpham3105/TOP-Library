@@ -6,11 +6,20 @@ const dialogAdd = document.getElementById("dialog-add");
 const close = document.getElementById("close");
 const read_Button = document.getElementsByClassName("readButton")
 
-function Book(author, title, pages, read) {
-    this.author = author;
-    this.title = title;
-    this.pages = pages;
-    this.read = read
+// function Book(author, title, pages, read) {
+// this.author = author;
+// this.title = title;
+// this.pages = pages;
+// this.read = read
+// }
+
+class Book {
+    constructor(author, title, pages, read) {
+        this.author = author;
+        this.title = title;
+        this.pages = pages;
+        this.read = read
+    }
 }
 
 function addBookToLibrary(author, title, pages, read) {
